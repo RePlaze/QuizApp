@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="use">Use</string>
+    <string name="item_title">Item Title</string>
+    <string name="buy">Buy</string>
+</resources>
