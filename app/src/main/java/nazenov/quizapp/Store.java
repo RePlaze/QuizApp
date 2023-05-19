@@ -24,7 +24,7 @@ public class Store extends AppCompatActivity implements StoreAdapter.StoreAdapte
         recyclerView = findViewById(R.id.storeRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        storeItems = new ArrayList<>();
+        storeItems = generateStoreItems();
 
         adapter = new StoreAdapter(storeItems, this);
         recyclerView.setAdapter(adapter);
@@ -46,5 +46,15 @@ public class Store extends AppCompatActivity implements StoreAdapter.StoreAdapte
             // Display a toast message indicating that the item is already purchased
             Toast.makeText(this, "Item already purchased: " + storeItem.getName(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private List<StoreItem> generateStoreItems() {
+        List<StoreItem> storeItems = new ArrayList<>();
+
+        storeItems.add(new StoreItem("Dark", 10, false));
+        storeItems.add(new StoreItem("Purple", 15, false));
+        storeItems.add(new StoreItem("Blue", 20, false));
+
+        return storeItems;
     }
 }
