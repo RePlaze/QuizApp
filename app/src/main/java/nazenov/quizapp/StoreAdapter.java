@@ -1,3 +1,4 @@
+// StoreAdapter
 package nazenov.quizapp;
 
 import android.view.LayoutInflater;
@@ -32,11 +33,10 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         StoreItem storeItem = storeItems.get(position);
-        holder.itemNameTextView.setText(storeItem.getTitle());
+        holder.itemNameTextView.setText(storeItem.getName());
         holder.itemPriceTextView.setText(String.valueOf(storeItem.getPrice()));
         holder.buyButton.setVisibility(storeItem.isPurchased() ? View.GONE : View.VISIBLE);
         holder.buyButton.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +48,6 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -69,6 +68,4 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
             buyButton = itemView.findViewById(R.id.buyButton);
         }
     }
-
-
 }

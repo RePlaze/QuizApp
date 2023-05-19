@@ -1,3 +1,4 @@
+// MainActivity
 package nazenov.quizapp;
 
 import android.content.DialogInterface;
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 storeItems.add(new StoreItem("Blue", 20, false));
 
                 // Pass items to the Store activity
-                intent.putExtra("storeItems", (ArrayList<StoreItem>) storeItems);
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("storeItems", new ArrayList<>(storeItems));
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

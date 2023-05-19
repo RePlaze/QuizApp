@@ -1,3 +1,4 @@
+// Store
 package nazenov.quizapp;
 
 import android.os.Bundle;
@@ -32,11 +33,18 @@ public class Store extends AppCompatActivity implements StoreAdapter.StoreAdapte
     @Override
     public void onItemPurchased(int position) {
         StoreItem storeItem = storeItems.get(position);
-        storeItem.setPurchased(true);
-        adapter.notifyItemChanged(position);
 
-        // Display a toast message
-        Toast.makeText(this, "Item purchased: " + storeItem.getTitle(), Toast.LENGTH_SHORT).show();
+        // Check if the item is already purchased
+        if (!storeItem.isPurchased()) {
+            // Update the purchase status
+            storeItem.setPurchased(true);
+            adapter.notifyItemChanged(position);
+
+            // Display a toast message
+            Toast.makeText(this, "Item purchased: " + storeItem.getName(), Toast.LENGTH_SHORT).show();
+        } else {
+            // Display a toast message indicating that the item is already purchased
+            Toast.makeText(this, "Item already purchased: " + storeItem.getName(), Toast.LENGTH_SHORT).show();
+        }
     }
-
 }

@@ -42,7 +42,7 @@ public class StoreActivity extends AppCompatActivity implements StoreAdapter.Sto
         adapter.notifyItemChanged(position);
 
         // Display a toast message
-        Toast.makeText(this, "Item purchased: " + storeItem.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Item purchased: " + storeItem.getName(), Toast.LENGTH_SHORT).show();
     }
 
     private List<StoreItem> generateStoreItems() {
