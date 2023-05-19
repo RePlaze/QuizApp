@@ -1,6 +1,7 @@
 package nazenov.quizapp;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +31,12 @@ public class Store extends AppCompatActivity implements StoreAdapter.StoreAdapte
 
     @Override
     public void onItemPurchased(int position) {
-        // Handle item purchased event
+        StoreItem storeItem = storeItems.get(position);
+        storeItem.setPurchased(true);
+        adapter.notifyItemChanged(position);
+
+        // Display a toast message
+        Toast.makeText(this, "Item purchased: " + storeItem.getTitle(), Toast.LENGTH_SHORT).show();
     }
+
 }
