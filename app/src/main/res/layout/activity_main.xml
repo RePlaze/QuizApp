@@ -72,12 +72,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/difficultCard"
+                android:id="@+id/storePage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
+                android:onClick="onClickStore"
                 app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="25dp"
                 app:strokeWidth="0dp">
@@ -97,21 +98,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/aboutCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                app:cardBackgroundColor="@color/card_background"
-                app:cardCornerRadius="25dp"
-                app:strokeWidth="0dp">
-
-                <!-- Add the necessary content for the about card -->
-            </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

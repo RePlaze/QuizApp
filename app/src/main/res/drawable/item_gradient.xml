@@ -1,0 +1,24 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/darkGradient"
+                android:endColor="@color/darkGradient2"
+                android:angle="160" />
+
+            <corners android:radius="120dp" />
+        </shape>
+    </item>
+    <!-- Stroke -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000" /> <!-- Transparent color for stroke -->
+            <stroke
+                android:width="3dp"
+                android:color="#FFFFFF" />
+
+            <corners android:radius="120dp" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,4 +1,3 @@
-// MainActivity.java
 package nazenov.quizapp;
 
 import android.content.DialogInterface;
@@ -8,15 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity {
     private TextView balanceTextView;
-    private CardView easyCard;
-    private CardView storePage;
+    private final int STORE_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         balanceTextView = findViewById(R.id.balanceTextView);
-        easyCard = findViewById(R.id.easyCard);
-        storePage = findViewById(R.id.storePage);
 
-        easyCard.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.easyCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Quiz
@@ -36,38 +32,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        storePage.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.storePage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Store
                 Intent intent = new Intent(MainActivity.this, Store.class);
-                startActivity(intent);
+                startActivityForResult(intent, STORE_REQUEST_CODE);
             }
         });
-
-        // Update the balance
         updateBalance();
-    }
-
-    // Back pop-up
-    @Override
-    public void onBackPressed() {
-        MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(MainActivity.this);
-        materialAlertDialogBuilder.setTitle(R.string.app_name);
-        materialAlertDialogBuilder.setMessage("Do you want to exit the app?");
-        materialAlertDialogBuilder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        materialAlertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        materialAlertDialogBuilder.show();
     }
 
     private void updateBalance() {
@@ -75,5 +48,33 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         int balance = sharedPreferences.getInt("balance", 0);
         balanceTextView.setText("Balance: " + balance);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == STORE_REQUEST_CODE && resultCode == RESULT_OK) {
+            updateBalance();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.app_name)
+                .setMessage("Do you want to exit the app?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 }

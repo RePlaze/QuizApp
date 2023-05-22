@@ -118,25 +118,25 @@ public class Store extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void showInsufficientBalanceDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setTitle("Insufficient Balance");
-        builder.setMessage("You don't have enough balance to make this purchase.");
-        builder.setPositiveButton("OK", null);
-        builder.create().show();
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("Insufficient Balance")
+                .setMessage("You don't have enough balance to make this purchase.")
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private void showConfirmationDialog(final String item, final int itemPrice) {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setTitle("Confirm Purchase");
-        builder.setMessage("Are you sure you want to buy this item?");
-        builder.setPositiveButton("Buy", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                makePurchase(item, itemPrice);
-            }
-        });
-        builder.setNegativeButton("Cancel", null);
-        builder.create().show();
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("Confirm Purchase")
+                .setMessage("Are you sure you want to buy this item?")
+                .setPositiveButton("Buy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        makePurchase(item, itemPrice);
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
     }
 
     private void makePurchase(String item, int itemPrice) {
@@ -192,7 +192,6 @@ public class Store extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void disablePurpleItem() {
-        // Handle "Disable" functionality for purple item
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             cardBackgroundImageView.setBackgroundColor(getColor(R.color.card_background));
         }
@@ -201,7 +200,6 @@ public class Store extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void useDarkItem() {
-        // Handle "Use" functionality for dark item
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             cardBackgroundImageView.setBackgroundColor(getColor(R.color.dark_card_background));
         }
@@ -210,16 +208,13 @@ public class Store extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void disableDarkItem() {
-        // Handle "Disable" functionality for dark item
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             cardBackgroundImageView.setBackgroundColor(getColor(R.color.card_background));
-        }
         darkUseButton.setVisibility(View.VISIBLE);
         darkDisableButton.setVisibility(View.GONE);
     }
 
     private void useBlueItem() {
-        // Handle "Use" functionality for blue item
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             cardBackgroundImageView.setBackgroundColor(getColor(R.color.blue_card_background));
         }
@@ -228,7 +223,6 @@ public class Store extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void disableBlueItem() {
-        // Handle "Disable" functionality for blue item
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             cardBackgroundImageView.setBackgroundColor(getColor(R.color.card_background));
         }
@@ -240,17 +234,18 @@ public class Store extends AppCompatActivity implements View.OnClickListener {
         int balance = sharedPreferences.getInt("balance", 0);
         balanceTextView.setText("Balance: " + balance);
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.darkItemBuyButton:
-                performPurchase("dark",10);
+                performPurchase("dark", 10);
                 break;
             case R.id.blueItemBuyButton:
-                performPurchase("blue",15);
+                performPurchase("blue", 15);
                 break;
             case R.id.purpleItemBuyButton:
-                performPurchase("purple",20);
+                performPurchase("purple", 20);
                 break;
             case R.id.darkUseButton:
                 useDarkItem();
