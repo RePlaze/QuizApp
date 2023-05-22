@@ -40,7 +40,7 @@ public class BasicQuiz extends AppCompatActivity {
         bans = findViewById(R.id.banswer);
         cans = findViewById(R.id.canswer);
         dans = findViewById(R.id.danswer);
-
+        updatecolor();
         loadAllQuestions();
         Collections.shuffle(quesitionsItems);
         setQuestionScreen(currentQuestions);
@@ -181,6 +181,14 @@ public class BasicQuiz extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void updatecolor() {
+        quiztext.setBackgroundResource(R.color.white);
+        aans.setBackgroundResource(R.color.white);
+        bans.setBackgroundResource(R.color.white);
+        cans.setBackgroundResource(R.color.white);
+        dans.setBackgroundResource(R.color.white);
     }
 
     private void setQuestionScreen(int currentQuestions) {

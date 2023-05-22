@@ -1,4 +1,4 @@
-// MainActivity
+// MainActivity.java
 package nazenov.quizapp;
 
 import android.content.DialogInterface;
@@ -9,18 +9,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView balanceTextView;
-    private MaterialCardView easyCard;
-    private MaterialCardView difficultCard;
-    private MaterialCardView aboutCard;
+    private CardView easyCard;
+    private CardView storePage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         balanceTextView = findViewById(R.id.balanceTextView);
         easyCard = findViewById(R.id.easyCard);
-        difficultCard = findViewById(R.id.difficultCard);
-        aboutCard = findViewById(R.id.aboutCard);
+        storePage = findViewById(R.id.storePage);
 
         easyCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,22 +36,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        difficultCard.setOnClickListener(new View.OnClickListener() {
+        storePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Store
                 Intent intent = new Intent(MainActivity.this, Store.class);
-
-                // Create test items
-                List<StoreItem> storeItems = new ArrayList<>();
-                storeItems.add(new StoreItem("Dark", 10, false));
-                storeItems.add(new StoreItem("Purple", 15, false));
-                storeItems.add(new StoreItem("Blue", 20, false));
-
-                // Pass items to the Store activity
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("storeItems", new ArrayList<>(storeItems));
-                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

@@ -14,13 +14,18 @@
 
     <color name="purchasedItemBackground">#FF00FF00</color>
     <color name="unpurchasedItemBackground">#FFFF0000</color>
-
+    <color name="cancelButtonColor">#FF0000</color>
+    <color name="useButtonColor">#00FF00</color>
 
     <color name="background">#f2f0f4</color>
     <color name="card_background">#ffffff</color>
     <color name="text_color">#1b1b1b</color>
     <color name="text_secondery_color">#44464e</color>
 
+    <color name="default_card_background">#FFFFFF</color>
+    <color name="dark_card_background">#000000</color>
+    <color name="blue_card_background">#0093E9</color>
+    <color name="purple_card_background">#FF6200EE</color>
 
     <color name="darkGradient">#000000</color>
     <color name="darkGradient2">#414345</color>
@@ -28,6 +33,5 @@
     <color name="purpleGradient2">#2a0845</color>
     <color name="blueGradient">#0093E9</color>
     <color name="blueGradient2">#80D0C7</color>
-
 
 </resources>
